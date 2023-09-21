@@ -1,0 +1,58 @@
+.intro-section,
+.section {
+  margin: auto;
+  flex-direction: column;
+  @include flex-center;
+  text-align: center;
+  gap: 25px;
+
+  &_content {
+    h2 {
+      padding: 0.5rem 1rem;
+      span {
+        color: $color-4;
+      }
+    }
+
+    p {
+      padding: 1rem 2rem;
+      font-family: Montserrat;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 27.5px; /* 211.538% */
+    }
+  }
+}
+
+@include media-md {
+  .intro-section,
+  .section {
+    flex-direction: row;
+    padding: 5rem 8rem;
+    justify-content: space-between;
+
+    &.reverse {
+      flex-direction: row-reverse !important;
+    }
+
+    &_content {
+      text-align: left;
+      width: 50%;
+      h2 {
+        padding: 0;
+      }
+
+      p {
+        padding: 0;
+      }
+    }
+
+    &_img {
+      width: 40%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

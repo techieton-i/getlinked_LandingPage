@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap");
+
+$primary-color: linear-gradient(270deg, #903aff 0%, #fe34b9 100%);
+$color--2: #150e28;
+$color-3: #903aff;
+$color-4: #d434fe;
+$text-color: #fff;
+
+@import "./mixins";
+@import "../assets/font/css/clash-display";
+@import "../components/Navbar/navbar";
+@import "../components/Button/button";
+@import "../pages/Home/home";
+@import "../pages/Home/intro";
+@import "../pages/Home/faq";
+@import "../pages/Home/timeline";
+@import "../pages/Home/prize";
+@import "../pages/Home/criteria";
+@import "../components/Footer/footer";
+@import "../pages/Contact/contact";
+@import "../pages/Register/register";
+@import "../components/IForm/form";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //   font-weight: 300;
+  //   font-size: 2rem;
+}
+
+.container {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body {
+  background-color: $color--2;
+  font-family: ClashDisplay, sans-serif;
+}

@@ -1,0 +1,232 @@
+.prizes {
+  margin-top: 5rem;
+  padding: 0 1rem;
+
+  .title {
+    padding: 0 2rem;
+    span {
+      color: $color-4;
+    }
+    p {
+      text-align: center;
+      font-family: "Montserrat";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 170.9%; /* 20.508px */
+    }
+  }
+}
+
+.partners {
+  padding: 1rem 0 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  .title {
+    h2 {
+      font-size: 20px;
+    }
+  }
+}
+
+.policy {
+  @extend .prizes;
+  padding: 1rem 3rem 4rem 3rem;
+
+  &-body {
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 25px;
+  }
+  .title {
+    h2 {
+      font-size: 20px;
+      p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 27.5px; /* 229.167% */
+      }
+    }
+  }
+
+  &-img {
+    width: 95%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-content {
+    border: 1px solid $color-4;
+    border-radius: 5px;
+    padding: 2rem 1rem;
+    font-family: "Montserrat";
+    line-height: 216.4%;
+    font-size: 13px;
+    text-align: left;
+
+    & > p {
+      text-align: center;
+      font-size: 12px;
+    }
+
+    & > div {
+      margin-top: 1rem;
+      div {
+        margin-bottom: 1rem;
+        h3 {
+          font-size: 13px;
+          color: $color-4;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        // list-style-image: url("/src/assets/icons/list\ terms.svg");
+
+        li {
+          position: relative;
+          padding-left: 1.8rem;
+          font-size: 12px;
+
+          &::before {
+            content: "";
+            width: 17px;
+            height: 17px;
+            top: 7px;
+            left: 0;
+            position: absolute;
+            background: url("/src/assets/icons/list\ terms.svg");
+          }
+        }
+      }
+    }
+  }
+}
+
+.policy-btn {
+  display: flex;
+  align-self: center;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  font-family: "Montserrat";
+  font-size: 12px;
+  line-height: normal;
+}
+
+@include media-md {
+  .prizes {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 8rem;
+
+    &-img {
+      width: 40%;
+      margin-top: 10rem;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .title {
+      width: 60%;
+      text-align: left;
+
+      &-box {
+        background-color: red;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+      p {
+        text-align: left;
+      }
+
+      &-img {
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .partners {
+    flex-direction: column;
+    .title {
+      h2 {
+        font-size: 32px;
+      }
+      p {
+        width: 30rem;
+        font-size: 14px;
+      }
+    }
+    &-img {
+      width: 70%;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .policy {
+    width: 100%;
+    padding: 1rem 8rem 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .title {
+      text-align: left !important;
+      padding-left: 0;
+      h2 {
+        font-size: 20px;
+        p {
+          text-align: left;
+        }
+      }
+      p {
+        text-align: left;
+      }
+    }
+
+    &-body {
+      width: 50%;
+      padding: 0 2rem;
+    }
+
+    &-img {
+      width: 38%;
+    }
+    &-content {
+      & > p {
+        text-align: left;
+      }
+    }
+  }
+}

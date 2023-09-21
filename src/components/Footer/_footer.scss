@@ -1,0 +1,114 @@
+.footer {
+  padding: 1rem 3rem;
+  font-family: "Montserrat";
+
+  &-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &-terms {
+    h3 {
+      font-size: 20px;
+      margin-bottom: 1rem;
+      font-family: ClashDisplay, sans-serif;
+      span {
+        color: $color-4;
+      }
+    }
+    p {
+      //   font-family: "Montserrat";
+      font-size: 12px;
+      line-height: 172.4%;
+    }
+    div {
+      //   font-family: "Montserrat";
+      font-size: 12px;
+      line-height: 172.4%;
+      color: $color-4;
+      margin-top: 1rem;
+      span {
+        color: $text-color;
+      }
+    }
+  }
+
+  &-links {
+    // font-family: "Montserrat";
+    h3 {
+      color: $color-4;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 172.4%; /* 24.136px */
+      margin-bottom: 0.8rem;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 12px;
+
+      p:last-of-type {
+        color: $color-4;
+        font-weight: 400;
+      }
+    }
+  }
+  .contact-us {
+    h3 {
+      color: $color-4;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 172.4%; /* 24.136px */
+      margin-bottom: 0.8rem;
+    }
+
+    & div {
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 12px;
+      font-style: normal;
+      line-height: 157.9%;
+      width: 100%;
+    }
+  }
+
+  & > p {
+    font-size: 12px;
+    width: fit-content;
+    margin: 1rem auto;
+    line-height: normal;
+  }
+}
+
+@include media-md {
+  .footer {
+    padding: 0 8rem;
+    &-contents {
+      width: 100%;
+      margin: 1rem auto 3rem;
+      flex-direction: row;
+      align-items: center;
+
+      justify-content: space-evenly;
+      gap: 5rem;
+    }
+
+    &-terms {
+      width: 50%;
+
+      h3 {
+        font-size: 30px;
+      }
+    }
+  }
+}
