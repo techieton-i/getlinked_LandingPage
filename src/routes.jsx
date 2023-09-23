@@ -1,6 +1,6 @@
-import Contact from "./pages/Contact/contact";
+import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
-import Register from "./pages/Register/register";
+import Register from "./pages/Register/Register";
 
 const routes = [
   {
