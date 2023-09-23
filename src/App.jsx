@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import routes from "./routes";
+import routes from "./Routes";
 import "./styles/index.scss";
 import Navbar from "./components/Navbar/Navbar";
 import "./assets/font/css/_clash-display.scss";
