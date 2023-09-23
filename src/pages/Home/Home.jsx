@@ -1,10 +1,10 @@
 import BtnPrimary from "../../components/Button/BtnPrimary";
-import heroImg from "../../assets/images/Hackathon guy.png";
+import heroImg from "../../assets/images/Hackathon guy.svg";
 import ideaPng from "../../assets/images/Group 11.svg";
 import rulesImg from "../../assets/images/Group 10.svg";
 import { motion } from "framer-motion";
 import judgeImg from "../../assets/images/Group 9.svg";
-import chainIcon from "../../assets/images/chain-9365116-7621444.png";
+import chainIcon from "../../assets/images/chain-9365116-7621444.svg";
 import sparkIcon from "../../assets/images/1f4a5.png";
 import faqIcon from "../../assets/images/Group 2.svg";
 import { Criteria, faqQuestions, timeline } from "../../mockData";
@@ -43,16 +43,16 @@ const draw = {
 const Home = () => {
   const mobile = useIsMobileView();
   return (
-    <div className="home">
-      <section className="home_hero">
+    <div className="home container">
+      <section className="home_hero ">
         <div className="home_hero-content">
           <div className="slogan">
             <p>Igniting a Revolution in HR Innovation</p>
             <motion.svg
               initial="hidden"
               animate="visible"
-              width="117"
-              height="11"
+              width={mobile ? "117" : "200"}
+              height={mobile ? "11" : "20"}
               viewBox="0 0 117 11"
               fill="none"
             >
@@ -66,7 +66,7 @@ const Home = () => {
           </div>
           <div className="hero-text">
             <h2>getlinked Tech</h2>
-            <h2>
+            <h2 className="heading">
               Hackathon <span>1.0</span>
               <span className="icon1">
                 <img src={chainIcon} />
