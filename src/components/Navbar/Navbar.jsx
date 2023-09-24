@@ -2,6 +2,8 @@ import { useCycle } from "framer-motion";
 import { ToggleMenuIcon } from "./ToggleMenuButton";
 import { motion } from "framer-motion";
 import BtnPrimary from "../Button/BtnPrimary";
+import { useIsMobileView } from "../../utils/useIsMobileView";
+import { Link, useNavigate } from "react-router-dom";
 
 const navItems = ["Timeline", "Overview", "FAQs", "Contact"];
 const variants = {
@@ -25,14 +27,18 @@ const variants = {
 
 const Navbar = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
+  const mobile = useIsMobileView();
+
+  const navigate = useNavigate();
   return (
     <div className="navbar container">
       <div className="navbar-brand">
         get<span className="">Linked</span>
       </div>
+      {/* {mobile ? ( */}
       <motion.nav
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={mobile ? (isOpen ? "open" : "closed") : "open"}
         // variants={{ open: { x: 0 }, closed: { x: 100 } }}
         custom={300}
       >
@@ -57,7 +63,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item}
+              {item === "Contact" ? <Link to={`/${item}`}>{item}</Link> : item}
             </motion.li>
           ))}
           <motion.li
@@ -65,14 +71,14 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <BtnPrimary text={"Register"} />
+            <BtnPrimary
+              text={"Register"}
+              onClick={() => navigate("/register")}
+            />
           </motion.li>
         </motion.ul>
         <ToggleMenuIcon toggle={() => toggleOpen()} />
       </motion.nav>
-      {/* <motion.div animate={isOpen ? "open" : "closed"}>
-        <ToggleMenuIcon toggle={() => toggleOpen()} />
-      </motion.div> */}
     </div>
   );
 };

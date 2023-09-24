@@ -105,6 +105,7 @@
       flex-direction: row;
       justify-content: center;
       padding-left: 4rem;
+      padding-top: 2rem;
 
       align-items: center;
       position: relative;
@@ -126,8 +127,22 @@
 
       .hero-text {
         text-align: left;
-        h2 {
+        & > h2:first-of-type {
           font-size: 80px;
+          margin-top: 7rem;
+          position: relative;
+          &::after {
+            background: url("/src/assets/images/Creative\ 1.svg");
+            object-position: center;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            content: "";
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            top: -48px;
+            right: 170px;
+          }
         }
         .heading {
           font-size: 80px;
@@ -145,6 +160,10 @@
         p {
           font-size: 20px;
         }
+        .btn {
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+        }
         .countdown {
           font-size: 64px;
 
@@ -153,7 +172,7 @@
           }
         }
       }
-
+      width: 100%;
       &-img {
         width: 50%;
         margin-top: 4rem;
