@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
-
+import { motion } from "framer-motion";
 const BtnPrimary = ({ text, className, onClick }) => {
   return (
-    <button className={`${className} btn-primary`} onClick={onClick}>
+    <motion.button
+      className={`${className} btn-primary`}
+      onClick={onClick}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
       {text}
-    </button>
+    </motion.button>
   );
 };
 

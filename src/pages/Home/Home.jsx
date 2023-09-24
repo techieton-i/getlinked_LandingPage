@@ -16,6 +16,7 @@ import Footer from "../../components/Footer/Footer";
 import { useIsMobileView } from "../../utils/useIsMobileView";
 import prixe1 from "../../assets/images/Group 7.png";
 import prixe2 from "../../assets/images/Group 8.png";
+import { useNavigate } from "react-router-dom";
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i) => {
@@ -42,6 +43,7 @@ const draw = {
 
 const Home = () => {
   const mobile = useIsMobileView();
+  const navigate = useNavigate();
   return (
     <div className="home container">
       <section className="home_hero ">
@@ -79,7 +81,10 @@ const Home = () => {
               Participate in getlinked tech Hackathon <br /> 2023 stand a chance
               to win a Big prize
             </p>
-            <BtnPrimary text={"Register"} />
+            <BtnPrimary
+              text={"Register"}
+              onClick={() => navigate("/register")}
+            />
             <p className="countdown">
               00<span>H</span> 00<span>M</span> 00<span>S</span>{" "}
             </p>

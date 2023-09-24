@@ -5,20 +5,27 @@ import BtnPrimary from "../../components/Button/BtnPrimary";
 import CutomSelect from "../../components/IForm/CutomSelect";
 import grp_3 from "../../assets/images/Group 13.svg";
 import grp_4 from "../../assets/images/Group 14.svg";
+import CongratsModal from "../../components/Modals/CongratsModal";
+import { createPortal } from "react-dom";
+
+const groupSize = [
+  { id: 3, name: "3" },
+  { id: 5, name: "5" },
+  { id: 10, name: "10" },
+];
 
 const Register = () => {
   const [fieldValues, setFieldValues] = useState({
-    first_name: "",
+    team_name: "",
     phone_number: "",
     email: "",
-    message: "",
     category: "",
     group_size: "",
     privacy_poclicy_accepted: false,
+    project_topic: "",
   });
   const [categoryList, setCategoryList] = useState([]);
-  //   {{baseUrl}}/hackathon/categories-list
-  //   {{baseUrl}}/hackathon/registration
+  const [showCongratsModal, setShowCongratsModal] = useState(false);
 
   const fetchCategoryList = useCallback(async () => {
     try {
@@ -46,6 +53,7 @@ const Register = () => {
     try {
       let response = await axios.post(register_url, fieldValues);
       console.log(response);
+      setShowCongratsModal(true);
     } catch (error) {
       console.log(error);
     }
@@ -69,12 +77,12 @@ const Register = () => {
         <div className="contact-form_control register-form_control">
           <CustomInput
             type="text"
-            name="first_name"
+            name="team_name"
             label="Team's Name"
             placeholder="Team's Name"
             required
             onChange={handlechange}
-            value={fieldValues.name}
+            value={fieldValues.team_name}
           />
           <CustomInput
             type="text"
@@ -96,12 +104,12 @@ const Register = () => {
           />
           <CustomInput
             type={"text"}
-            name="topic"
+            name="project_topic"
             label="Project Topic"
             placeholder="What is your group project topic"
             required
             onChange={handlechange}
-            value={fieldValues.email}
+            value={fieldValues.project_topic}
           />
           <div className="form-select">
             <CutomSelect
@@ -115,7 +123,7 @@ const Register = () => {
               required
             />
             <CutomSelect
-              options={[1, 2, 3]}
+              options={groupSize}
               name={"group_size"}
               label={"Group Size"}
               value={fieldValues.group_size}
@@ -144,6 +152,11 @@ const Register = () => {
         </div>
         <BtnPrimary text={"submit"} onClick={handleSubmit} />
       </div>
+      {showCongratsModal &&
+        createPortal(
+          <CongratsModal cancel={() => setShowCongratsModal(false)} />,
+          document.body
+        )}
     </div>
   );
 };

@@ -3,6 +3,8 @@ import BtnPrimary from "../../components/Button/BtnPrimary";
 import CustomInput from "../../components/IForm/CustomInput";
 import social_img from "../../assets/images/Social media.png";
 import axios from "axios";
+import CongratsModal from "../../components/Modals/CongratsModal";
+import { createPortal } from "react-dom";
 
 const Contact = () => {
   const [fieldValues, setFieldValues] = useState({
@@ -11,17 +13,17 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
+  const [showCongratsModal, setShowCongratsModal] = useState(false);
   const handlechange = (e) => {
     setFieldValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = useCallback(async () => {
-    console.log(fieldValues);
     const contact_url = "https://backend.getlinked.ai/hackathon/contact-form";
     try {
       let response = await axios.post(contact_url, fieldValues);
       console.log(response);
+      setShowCongratsModal(true);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +66,7 @@ const Contact = () => {
             placeholder="Team's Name"
             required
             onChange={handlechange}
-            value={fieldValues.name}
+            value={fieldValues.first_name}
           />
           <CustomInput
             type="text"
@@ -72,7 +74,7 @@ const Contact = () => {
             placeholder="Phone Number"
             required
             onChange={handlechange}
-            value={fieldValues.topic}
+            value={fieldValues.phone_number}
           />
           <CustomInput
             type={"text"}
@@ -100,6 +102,11 @@ const Contact = () => {
           <img src={social_img} />
         </div>
       </div>
+      {showCongratsModal &&
+        createPortal(
+          <CongratsModal cancel={() => setShowCongratsModal(false)} />,
+          document.body
+        )}
     </div>
   );
 };

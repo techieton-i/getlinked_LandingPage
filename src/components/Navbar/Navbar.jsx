@@ -10,6 +10,8 @@ const variants = {
   open: {
     y: 0,
     // x: 0,
+    display: "block",
+
     opacity: 1,
     transition: {
       y: { stiffness: 1000, velocity: -100 },
@@ -18,6 +20,7 @@ const variants = {
   closed: {
     y: 50,
     // x: 100,
+    display: "none",
     opacity: 0,
     transition: {
       y: { stiffness: 1000 },
@@ -32,7 +35,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navbar container">
-      <div className="navbar-brand">
+      <div className="navbar-brand" onClick={() => navigate("/")}>
         get<span className="">Linked</span>
       </div>
       {/* {mobile ? ( */}
