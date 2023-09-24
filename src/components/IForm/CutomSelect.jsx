@@ -8,20 +8,23 @@ const CutomSelect = ({
   name,
   id,
   onChange,
+  required,
 }) => {
   return (
     <div className="custom-select">
       <label htmlFor={id}>{label}</label>
       <select
-        placeholder={placeholder}
+        placeholder={"fghgfd"}
         value={value}
         name={name}
         id={id}
         onChange={onChange}
+        required={required}
       >
+        <option>{placeholder}</option>
         {options.map((option) => (
-          <option value={option} key={option}>
-            {option}
+          <option value={option.id} key={option.id}>
+            {option.name}
           </option>
         ))}
       </select>

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CustomInput from "../../components/IForm/CustomInput";
 import axios from "axios";
 import BtnPrimary from "../../components/Button/BtnPrimary";
@@ -16,28 +16,48 @@ const Register = () => {
     group_size: "",
     privacy_poclicy_accepted: false,
   });
+  const [categoryList, setCategoryList] = useState([]);
+  //   {{baseUrl}}/hackathon/categories-list
+  //   {{baseUrl}}/hackathon/registration
 
+  const fetchCategoryList = useCallback(async () => {
+    try {
+      const res = await axios.get(
+        "https://backend.getlinked.ai/hackathon/categories-list"
+      );
+      console.log(res);
+      setCategoryList(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCategoryList();
+  }, [fetchCategoryList]);
   const handlechange = (e) => {
     setFieldValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = useCallback(async () => {
-    console.log(fieldValues);
-    const contact_url = "https://backend.getlinked.ai/hackathon/contact-form";
+    if (!fieldValues.privacy_poclicy_accepted) return;
+
+    const register_url = "https://backend.getlinked.ai/hackathon/registration";
     try {
-      let response = await axios.post(contact_url, fieldValues);
+      let response = await axios.post(register_url, fieldValues);
       console.log(response);
     } catch (error) {
       console.log(error);
     }
   }, [fieldValues]);
   return (
-    <div className=" register">
+    <div className=" register container">
       <div className="register-img">
         <img src={grp_4} />
       </div>
       <div className="contact-form">
         <div className="register-form_title">
+          <h3>Register</h3>
           <p>
             Be part of this movement!{" "}
             <span>
@@ -85,19 +105,23 @@ const Register = () => {
           />
           <div className="form-select">
             <CutomSelect
-              options={[1, 2, 3]}
+              options={categoryList}
               id={"sdffsd"}
               name={"category"}
               value={fieldValues.category}
               placeholder="Select your category"
+              onChange={handlechange}
               label={"Category"}
+              required
             />
             <CutomSelect
               options={[1, 2, 3]}
               name={"group_size"}
               label={"Group Size"}
               value={fieldValues.group_size}
-              placeholder="Select your category"
+              placeholder="Select"
+              onChange={handlechange}
+              required
             />
           </div>
           <p>Please review your registration details before submitting</p>
